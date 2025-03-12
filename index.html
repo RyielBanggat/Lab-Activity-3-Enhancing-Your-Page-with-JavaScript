@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Interactive Webpage</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .carousel img {
+            width: 100%;
+            max-width: 200px; 
+            display: block;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .carousel img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body onload="initializeDarkMode(); displayGreeting(); generateQuote();">
+    <nav>
+        <a href="#section1">About</a>
+        <a href="#section2">Services</a>
+        <a href="#section3">Contact</a>
+        <button id="darkModeToggle">Toggle Dark Mode</button>
+        <a href="https://www.facebook.com/ryiel.s.banggat" target="_blank" class="fb-link">
+            <img src="f_logo_RGB-Blue_1024.png" alt="Facebook" width="30" height="30">
+        </a>
+    </nav>
+    
+    <button id="backToTop" onclick="scrollToTop()">⬆</button>
+    
+    <div class="container">
+        <h1 id="greeting"></h1>
+        <h2 id="typing-text"></h2>
+        <p id="quote"></p>
+        
+        <div class="carousel">
+            <div class="slides">
+                <img src="99c7a19f-c563-48e4-a5fd-9e15cb7ad5de.jpg" alt="Image 3" class="landscape-img">
+            </div>
+        </div>
+        
+        <div id="section1" class="section">
+            <h2>About Us</h2>
+            <p id="about-text">This is a short introduction about Myself.</p>
+            <button onclick="toggleReadMore()">Read More</button>
+            <p id="more-text" class="hidden">Hey there! I’m Ryiel, a 19-year-old from the stunning Samal Island. Life here is all about sun, sea, and sports, but my true passion is basketball. Whether it’s a fast-paced game with friends or just perfecting my shots, the court is where I feel most alive. Nice to meet you!</p>
+        </div>
+        
+        <div id="section2" class="section">
+            <h2>Our Services</h2>
+            <div class="skill-bar">
+                <div class="skill" style="width: 0%;">Web Development</div>
+            </div>
+            <button onclick="toggleServicesReadMore()">Read More</button>
+            <p id="services-more-text" class="hidden">Hi! This website is for school purposes only. Thank you, and have a nice day!</p>
+        </div>
+        
+        <div id="section3" class="section">
+            <h2>Contact</h2>
+            <form onsubmit="return validateForm()">
+                <input type="text" id="name" placeholder="Your Name">
+                <input type="email" id="email" placeholder="Your Email">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function initializeDarkMode() {
+            if (localStorage.getItem("darkMode") === "enabled") {
+                document.body.classList.add("dark-mode");
+            }
+        }
+        
+        document.getElementById("darkModeToggle").addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("darkMode", "enabled");
+            } else {
+                localStorage.setItem("darkMode", "disabled");
+            }
+        });
+
+        function toggleReadMore() {
+            var moreText = document.getElementById("more-text");
+            if (moreText.style.display === "none" || moreText.style.display === "") {
+                moreText.style.display = "block";
+            } else {
+                moreText.style.display = "none";
+            }
+        }
+
+        function toggleServicesReadMore() {
+            var moreText = document.getElementById("services-more-text");
+            if (moreText.style.display === "none" || moreText.style.display === "") {
+                moreText.style.display = "block";
+            } else {
+                moreText.style.display = "none";
+            }
+        }
+    </script>
+    
+</body>
+</html>
